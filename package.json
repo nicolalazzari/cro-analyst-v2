@@ -1,0 +1,15 @@
+{
+  "name": "cro-analyst-v2",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "start": "cd frontend && npm start",
+    "db:generate": "cd frontend && npm run db:generate",
+    "db:push": "cd frontend && npm run db:push",
+    "db:migrate": "cd frontend && npm run db:migrate",
+    "db:studio": "cd frontend && npm run db:studio"
+  }
+}
+

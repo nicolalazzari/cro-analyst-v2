@@ -1,0 +1,68 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Experiment {
+  id                String   @id @default(uuid())
+  experimentId      String   @unique @map("experiment_id")
+  testName          String?  @map("test_name")
+  hypothesis        String?
+  lessonsLearned    String?  @map("lessons_learned")
+  embedding         Unsupported("vector(1536)")?
+  
+  // Relationships
+  launchedById      String?  @map("launched_by_id")
+  launchedBy        Person?  @relation("LaunchedExperiments", fields: [launchedById], references: [id])
+  
+  vertical          String?
+  geo               String?
+  brand             String?
+  
+  dateLaunched      String?  @map("date_launched")
+  dateConcluded     String?  @map("date_concluded")
+  winningVar        String?  @map("winning_var")
+  
+  // Additional fields from Google Sheets
+  observedRevenueImpact String? @map("observed_revenue_impact")
+  primaryMetricName     String? @map("primary_metric_name")
+  
+  createdAt         DateTime @default(now()) @map("created_at")
+  updatedAt         DateTime @updatedAt @map("updated_at")
+  
+  @@index([experimentId])
+  @@index([vertical])
+  @@index([geo])
+  @@map("experiments")
+}
+
+model Person {
+  id          String       @id @default(uuid())
+  name        String
+  email       String?      @unique
+  teamId      String?      @map("team_id")
+  team        Team?        @relation(fields: [teamId], references: [id])
+  
+  experiments Experiment[] @relation("LaunchedExperiments")
+  
+  createdAt   DateTime     @default(now()) @map("created_at")
+  updatedAt   DateTime     @updatedAt @map("updated_at")
+  
+  @@map("people")
+}
+
+model Team {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  people    Person[]
+  
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  
+  @@map("teams")
+}
+

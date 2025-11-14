@@ -1,0 +1,181 @@
+# CRO Analyst v2.0 - Required Skills & Technologies
+
+## Core Technologies
+
+### Frontend
+- [x] **Next.js 14+** - React framework with App Router
+- [x] **TypeScript** - Type-safe JavaScript
+- [x] **React 18+** - UI library
+- [x] **Tailwind CSS** - Utility-first CSS framework
+- [x] **shadcn/ui** - Component library
+- [x] **React Query** - Data fetching & caching
+- [x] **React Hook Form** - Form management
+- [x] **Zod** - Schema validation
+
+### Backend
+- [x] **FastAPI** (optional) - Python web framework
+- [x] **Next.js API Routes** - Serverless API endpoints
+- [x] **NextAuth.js** - Authentication
+- [x] **Prisma** - Database ORM
+- [x] **PostgreSQL** - Relational database
+- [x] **pgvector** - Vector similarity search
+- [x] **Redis** - Caching & session storage
+
+### AI/ML
+- [x] **Anthropic Claude** - LLM for analysis
+- [x] **OpenAI Embeddings** - Vector embeddings
+- [x] **RAG (Retrieval-Augmented Generation)** - Enhanced LLM responses
+
+### DevOps
+- [x] **Docker** - Containerization
+- [x] **Docker Compose** - Local development
+- [x] **Git** - Version control
+- [x] **GitHub Actions** - CI/CD (optional)
+- [x] **Vercel/Netlify** - Deployment
+
+### Data
+- [x] **Google Sheets API** - Data source
+- [x] **Google Drive API** - Screenshot storage
+- [x] **Pandas** - Data processing (migration)
+- [x] **DuckDB** - Analytics queries (optional)
+
+## Skills Required
+
+### Essential Skills
+1. **TypeScript/JavaScript** - Advanced proficiency
+2. **React** - Component development, hooks, state management
+3. **Next.js** - App Router, Server Components, API Routes
+4. **SQL** - Database queries, optimization
+5. **REST APIs** - API design, integration
+6. **Git** - Version control, branching
+
+### Important Skills
+7. **Prisma** - Database ORM, migrations
+8. **Authentication** - OAuth, JWT, session management
+9. **Vector Search** - Embeddings, similarity search
+10. **LLM Integration** - Prompt engineering, RAG
+11. **Redis** - Caching strategies
+12. **Docker** - Containerization basics
+
+### Nice-to-Have Skills
+13. **GraphQL** - Alternative API approach
+14. **WebSockets** - Real-time updates
+15. **Testing** - Jest, React Testing Library
+16. **Monitoring** - Error tracking, analytics
+17. **Performance Optimization** - Caching, lazy loading
+
+## Learning Resources
+
+### Next.js
+- [Next.js Learn](https://nextjs.org/learn)
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Next.js YouTube](https://www.youtube.com/c/Nextjs)
+
+### TypeScript
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)
+- [TypeScript Deep Dive](https://basarat.gitbook.io/typescript/)
+
+### Prisma
+- [Prisma Documentation](https://www.prisma.io/docs)
+- [Prisma Examples](https://www.prisma.io/docs/getting-started)
+
+### Vector Search
+- [pgvector Guide](https://github.com/pgvector/pgvector)
+- [OpenAI Embeddings](https://platform.openai.com/docs/guides/embeddings)
+- [RAG Tutorial](https://www.pinecone.io/learn/retrieval-augmented-generation/)
+
+### Authentication
+- [NextAuth.js Docs](https://next-auth.js.org)
+- [OAuth 2.0 Guide](https://oauth.net/2/)
+
+## Project Phases
+
+### Phase 1: Foundation (Week 1-2)
+- [ ] Next.js project setup
+- [ ] Database schema design
+- [ ] Basic authentication
+- [ ] Data migration from v1
+
+### Phase 2: Core Features (Week 3-4)
+- [ ] Experiment listing
+- [ ] Search functionality
+- [ ] Vector embeddings
+- [ ] Basic analytics
+
+### Phase 3: Advanced Features (Week 5-6)
+- [ ] RAG implementation
+- [ ] Advanced search
+- [ ] Experiment details
+- [ ] Screenshot integration
+
+### Phase 4: Polish (Week 7-8)
+- [ ] UI/UX improvements
+- [ ] Performance optimization
+- [ ] Testing
+- [ ] Documentation
+
+## Tools & Services
+
+### Development
+- **VS Code** - Code editor
+- **Prisma Studio** - Database GUI
+- **Postman/Insomnia** - API testing
+- **Docker Desktop** - Container management
+
+### Services
+- **Vercel** - Frontend hosting
+- **Railway/Render** - Backend hosting
+- **Supabase** - PostgreSQL hosting (with pgvector)
+- **Upstash** - Redis hosting
+- **Anthropic** - LLM API
+- **OpenAI** - Embeddings API
+
+### Monitoring
+- **Sentry** - Error tracking
+- **Vercel Analytics** - Web analytics
+- **LogRocket** - Session replay (optional)
+
+## Estimated Learning Time
+
+- **Next.js Basics**: 1-2 weeks
+- **TypeScript**: 1 week (if new)
+- **Prisma**: 3-5 days
+- **Vector Search**: 2-3 days
+- **RAG**: 3-5 days
+- **Total**: 3-4 weeks for full proficiency
+
+## Team Roles
+
+### Frontend Developer
+- Next.js, React, TypeScript
+- UI/UX implementation
+- Component development
+
+### Backend Developer
+- API development
+- Database design
+- Authentication
+
+### Full-Stack Developer
+- All of the above
+- End-to-end feature development
+
+### AI/ML Engineer
+- LLM integration
+- RAG implementation
+- Embedding generation
+
+## Development Workflow
+
+### Auto Mode
+- **File Operations**: Create, modify, and deploy files automatically without asking for permission
+- **Code Generation**: Generate code, components, and configurations proactively
+- **Project Setup**: Automatically set up project structure, dependencies, and configurations
+- **Best Practices**: Follow established patterns and conventions automatically
+
+**Note**: When working on this project, operate in "auto mode" - create and deploy files directly without requesting explicit permission for each operation. Focus on implementing features, fixing issues, and improving the codebase proactively.
+
+---
+
+**Note**: This is a modern stack. If you're new to any technology, allocate time for learning. The project is designed to be learnable incrementally.
+
