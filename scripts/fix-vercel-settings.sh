@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Script to help fix Vercel settings
+# Note: Project settings must be updated manually in the Vercel dashboard
+
+echo "🔧 Vercel Settings Fix"
+echo ""
+echo "The vercel.json file is correct, but you need to update Project Settings in the dashboard."
+echo ""
+echo "📋 Steps to fix:"
+echo ""
+echo "1. Go to: https://vercel.com/dashboard"
+echo "2. Select project: cro-analyst-v2-new"
+echo "3. Go to: Settings → General"
+echo "4. Update Build & Development Settings:"
+echo ""
+echo "   Build Command:"
+echo "   FROM: cd frontend && npm install && npm run build"
+echo "   TO:   prisma generate && npm run build"
+echo ""
+echo "   Output Directory:"
+echo "   FROM: frontend/.next"
+echo "   TO:   .next"
+echo ""
+echo "   Install Command:"
+echo "   FROM: cd frontend && npm install"
+echo "   TO:   npm ci"
+echo ""
+echo "   Development Command:"
+echo "   FROM: next"
+echo "   TO:   npm run dev"
+echo ""
+echo "5. Keep Root Directory as: frontend"
+echo "6. Save changes"
+echo ""
+echo "✅ After updating, the Production Overrides warning will disappear."
+echo ""
+
