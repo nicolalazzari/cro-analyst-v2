@@ -1,6 +1,7 @@
 import { Suspense } from 'react'
 import { SearchBar } from '@/components/search/SearchBar'
 import { ExperimentList } from '@/components/experiments/ExperimentList'
+import { Loading } from '@/components/shared/Loading'
 import { Card, CardContent } from '@/components/ui/card'
 
 async function searchExperiments(query: string) {
@@ -58,7 +59,7 @@ export default function SearchPage({
         <h1 className="text-3xl font-bold mb-4">Search Experiments</h1>
         <SearchBar />
       </div>
-      <Suspense fallback={<div>Searching...</div>}>
+      <Suspense fallback={<Loading />}>
         <SearchResults query={query} />
       </Suspense>
     </div>
