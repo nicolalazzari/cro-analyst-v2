@@ -7,9 +7,18 @@ export async function POST(request: Request) {
   try {
     // Check authentication
     const session = await auth()
-    if (!session?.accessToken) {
+    if (!session) {
       return NextResponse.json(
         { error: 'Unauthorized - Please sign in' },
+        { status: 401 }
+      )
+    }
+
+    // Get access token from session (added in NextAuth callbacks)
+    const accessToken = (session as any).accessToken
+    if (!accessToken) {
+      return NextResponse.json(
+        { error: 'No access token available. Please sign in again.' },
         { status: 401 }
       )
     }
@@ -27,7 +36,7 @@ export async function POST(request: Request) {
     // Initialize Google Sheets API with user's access token
     const oauth2Client = new google.auth.OAuth2()
     oauth2Client.setCredentials({
-      access_token: session.accessToken as string,
+      access_token: accessToken,
     })
 
     const sheets = google.sheets({ version: 'v4', auth: oauth2Client })
