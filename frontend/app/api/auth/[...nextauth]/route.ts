@@ -17,22 +17,20 @@ if (!process.env.NEXTAUTH_SECRET) {
 
 // Initialize adapter - will be used for storing users in database
 // Since we're using JWT sessions, the adapter is optional
-// If database connection fails, NextAuth will still work with JWT sessions
+// Temporarily disabled to debug 500 error - can be re-enabled later
 let adapter: any = undefined
-if (process.env.DATABASE_URL) {
-  try {
-    adapter = PrismaAdapter(prisma) as any
-    console.log('PrismaAdapter initialized successfully')
-  } catch (error) {
-    console.error('Failed to initialize PrismaAdapter:', error)
-    // Continue without adapter - will use JWT only (sessions won't be stored in DB)
-  }
-} else {
-  console.log('DATABASE_URL not set, using JWT sessions only (no adapter)')
-}
+// Uncomment below to enable database adapter (requires working DB connection)
+// if (process.env.DATABASE_URL) {
+//   try {
+//     adapter = PrismaAdapter(prisma) as any
+//     console.log('PrismaAdapter initialized successfully')
+//   } catch (error) {
+//     console.error('Failed to initialize PrismaAdapter:', error)
+//   }
+// }
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  adapter: adapter,
+  adapter: adapter, // undefined = JWT sessions only, no database storage
   trustHost: true,
   debug: process.env.NODE_ENV === 'development',
   providers: [
