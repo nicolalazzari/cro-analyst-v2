@@ -1,11 +1,10 @@
-import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
-import { authOptions } from '@/app/api/auth/[...nextauth]/route'
+import { auth } from '@/app/api/auth/[...nextauth]/route'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { SignInForm } from '@/components/auth/SignInForm'
 
 export default async function SignInPage() {
-  const session = await getServerSession(authOptions)
+  const session = await auth()
 
   if (session) {
     redirect('/')
