@@ -15,8 +15,18 @@ if (!process.env.NEXTAUTH_SECRET) {
   throw new Error('NEXTAUTH_SECRET is not set')
 }
 
+// Initialize adapter - will be used for storing users in database
+// If it fails, NextAuth will still work with JWT sessions
+let adapter: any = undefined
+try {
+  adapter = PrismaAdapter(prisma) as any
+} catch (error) {
+  console.error('Failed to initialize PrismaAdapter:', error)
+  // Continue without adapter - will use JWT only (sessions won't be stored in DB)
+}
+
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  adapter: PrismaAdapter(prisma) as any,
+  adapter: adapter,
   trustHost: true,
   providers: [
     GoogleProvider({
@@ -37,13 +47,19 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       }
       if (user) {
         token.id = user.id
+        token.email = user.email
+        token.name = user.name
+        token.picture = user.image
       }
       return token
     },
     async session({ session, token }: any) {
       if (session.user) {
-        session.user.id = token.id
-        session.accessToken = token.accessToken
+        session.user.id = token.id as string
+        session.user.email = token.email as string
+        session.user.name = token.name as string
+        session.user.image = token.picture as string
+        session.accessToken = token.accessToken as string
       }
       return session
     },
