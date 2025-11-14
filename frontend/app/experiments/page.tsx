@@ -1,7 +1,10 @@
+import { Suspense } from 'react'
 import { ExperimentList } from '@/components/experiments/ExperimentList'
 import { ExperimentFilters } from '@/components/experiments/ExperimentFilters'
 import { Pagination } from '@/components/experiments/Pagination'
 import { SearchBar } from '@/components/search/SearchBar'
+
+export const dynamic = 'force-dynamic'
 
 async function getExperiments(searchParams: { [key: string]: string | string[] | undefined }) {
   try {
@@ -42,21 +45,27 @@ export default async function ExperimentsPage({
     <div className="container mx-auto p-8">
       <div className="mb-8">
         <h1 className="text-3xl font-bold mb-4">Experiments</h1>
-        <SearchBar />
+        <Suspense fallback={<div>Loading search...</div>}>
+          <SearchBar />
+        </Suspense>
       </div>
       
-      <ExperimentFilters 
-        verticals={filters?.verticals || []} 
-        geos={filters?.geos || []} 
-      />
+      <Suspense fallback={<div>Loading filters...</div>}>
+        <ExperimentFilters 
+          verticals={filters?.verticals || []} 
+          geos={filters?.geos || []} 
+        />
+      </Suspense>
       
       <ExperimentList experiments={experiments || []} />
       
       {pagination && (
-        <Pagination
-          currentPage={pagination.page || 1}
-          totalPages={pagination.totalPages || 1}
-        />
+        <Suspense fallback={<div>Loading pagination...</div>}>
+          <Pagination
+            currentPage={pagination.page || 1}
+            totalPages={pagination.totalPages || 1}
+          />
+        </Suspense>
       )}
     </div>
   )
