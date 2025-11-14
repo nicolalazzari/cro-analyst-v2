@@ -1,5 +1,8 @@
+'use client'
+
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+import { SignInButton } from '@/components/auth/SignInButton'
 
 export function Navigation() {
   return (
@@ -20,9 +23,7 @@ export function Navigation() {
             </div>
           </div>
           <div className="flex items-center gap-4">
-            <Button variant="outline" size="sm">
-              Sign In
-            </Button>
+            <SignInButton />
           </div>
         </div>
       </div>
