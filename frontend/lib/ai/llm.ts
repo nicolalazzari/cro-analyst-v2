@@ -12,6 +12,13 @@ export async function generateResponse(prompt: string, systemPrompt: string) {
     messages: [{ role: 'user', content: prompt }],
   })
   
-  return message.content[0].text
+  // Handle different content block types
+  const firstBlock = message.content[0]
+  if (firstBlock.type === 'text') {
+    return firstBlock.text
+  }
+  
+  // Fallback: convert to string if not text block
+  return JSON.stringify(firstBlock)
 }
 
