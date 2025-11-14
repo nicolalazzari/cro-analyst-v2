@@ -20,6 +20,15 @@ if (!NEXTAUTH_SECRET) {
   throw new Error('NEXTAUTH_SECRET is not set')
 }
 
+// Debug logging (remove in production)
+if (process.env.NODE_ENV === 'development') {
+  console.log('OAuth Config:', {
+    clientId: GOOGLE_CLIENT_ID.substring(0, 20) + '...',
+    clientSecretLength: GOOGLE_CLIENT_SECRET.length,
+    hasNextAuthSecret: !!NEXTAUTH_SECRET,
+  })
+}
+
 // Initialize adapter - will be used for storing users in database
 // Since we're using JWT sessions, the adapter is optional
 // Temporarily disabled to debug 500 error - can be re-enabled later
