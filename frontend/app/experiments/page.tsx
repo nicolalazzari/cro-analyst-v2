@@ -44,7 +44,15 @@ export default async function ExperimentsPage({
   return (
     <div className="container mx-auto p-8">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-4">Experiments</h1>
+        <div className="flex items-center justify-between mb-4">
+          <h1 className="text-3xl font-bold">Experiments</h1>
+          <a
+            href="/import"
+            className="text-sm text-primary hover:underline"
+          >
+            Import from Google Sheets
+          </a>
+        </div>
         <Suspense fallback={<div>Loading search...</div>}>
           <SearchBar />
         </Suspense>
