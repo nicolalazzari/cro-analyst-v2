@@ -26,9 +26,10 @@ async function getExperiment(id: string) {
 export default async function ExperimentDetailPage({
   params,
 }: {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }) {
-  const experiment = await getExperiment(params.id)
+  const { id } = await params
+  const experiment = await getExperiment(id)
 
   if (!experiment) {
     notFound()
